@@ -20,22 +20,22 @@ import {
 } from "lucide-react";
 
 const modules = [
-  { name: "Contactos", icon: Users, path: "/dashboard/contacts", desc: "Gestión de contactos" },
-  { name: "Empresas", icon: Building2, path: "/dashboard/companies", desc: "Administrar empresas" },
-  { name: "Negocios", icon: Briefcase, path: "/dashboard/deals", desc: "Oportunidades de negocio" },
-  { name: "Tickets", icon: Ticket, path: "/dashboard/tickets", desc: "Soporte y tickets" },
-  { name: "Pedidos", icon: Package, path: "/dashboard/orders", desc: "Gestión de pedidos" },
-  { name: "Listas", icon: List, path: "/dashboard/lists", desc: "Segmentación de listas" },
-  { name: "Bandeja de entrada", icon: Inbox, path: "/dashboard/inbox", desc: "Comunicación centralizada" },
-  { name: "Llamadas", icon: Phone, path: "/dashboard/calls", desc: "Registro de llamadas" },
-  { name: "Tareas", icon: CheckSquare, path: "/dashboard/tasks", desc: "Gestión de tareas" },
-  { name: "Guías", icon: BookOpen, path: "/dashboard/guides", desc: "Documentación y guías" },
-  { name: "Mensajes", icon: MessageSquare, path: "/dashboard/messages", desc: "Plantillas de mensajes" },
-  { name: "Fragmentos", icon: FileText, path: "/dashboard/snippets", desc: "Textos predefinidos" },
-  { name: "Calendario", icon: Calendar, path: "/dashboard/calendar", desc: "Organiza tus actividades" },
-  { name: "Reportes", icon: TrendingUp, path: "/dashboard/reports", desc: "Analiza tus métricas" },
-  { name: "AI & ML", icon: Brain, path: "/dashboard/ai", desc: "Inteligencia Artificial" },
-  { name: "Mercado", icon: DollarSign, path: "/dashboard/market", desc: "Oportunidades del mercado" },
+  { name: "Contactos", icon: Users, path: "/dashboarlayout/contacts", desc: "Gestión de contactos" },
+  { name: "Empresas", icon: Building2, path: "/dashboarlayout/companies", desc: "Administrar empresas" },
+  { name: "Negocios", icon: Briefcase, path: "/dashboarlayout/deals", desc: "Oportunidades de negocio" },
+  { name: "Tickets", icon: Ticket, path: "/dashboarlayout/tickets", desc: "Soporte y tickets" },
+  { name: "Pedidos", icon: Package, path: "/dashboarlayout/orders", desc: "Gestión de pedidos" },
+  { name: "Listas", icon: List, path: "/dashboarlayout/lists", desc: "Segmentación de listas" },
+  { name: "Bandeja de entrada", icon: Inbox, path: "/dashboarlayout/inbox", desc: "Comunicación centralizada" },
+  { name: "Llamadas", icon: Phone, path: "/dashboarlayout/calls", desc: "Registro de llamadas" },
+  { name: "Tareas", icon: CheckSquare, path: "/dashboarlayout/tasks", desc: "Gestión de tareas" },
+  { name: "Guías", icon: BookOpen, path: "/dashboarlayout/guides", desc: "Documentación y guías" },
+  { name: "Mensajes", icon: MessageSquare, path: "/dashboarlayout/messages", desc: "Plantillas de mensajes" },
+  { name: "Fragmentos", icon: FileText, path: "/dashboarlayout/snippets", desc: "Textos predefinidos" },
+  { name: "Calendario", icon: Calendar, path: "/dashboarlayout/calendar", desc: "Organiza tus actividades" },
+  { name: "Reportes", icon: TrendingUp, path: "/dashboarlayout/reports", desc: "Analiza tus métricas" },
+  { name: "AI & ML", icon: Brain, path: "/dashboarlayout/ai", desc: "Inteligencia Artificial" },
+  { name: "Mercado", icon: DollarSign, path: "/dashboarlayout/market", desc: "Oportunidades del mercado" },
 ];
 
 const DashboardHome = () => {

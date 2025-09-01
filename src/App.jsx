@@ -38,7 +38,7 @@ function App() {
 
         {/* Dashboard protegido */}
         <Route
-          path="/dashboard"
+          path="/dashboardlayout"
           element={
             <PrivateRoute>
               <DashboardLayout />
