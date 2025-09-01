@@ -1,8 +1,7 @@
-// src/App.jsx
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
-import DashboardLayout from "./pages/DashboardLayout"; // ✅ nombre y ruta correctos
+import DashboardLayout from "./pages/DashboardLayout";
 import PrivateRoute from "./components/PrivateRoute";
 
 // Dashboard (home con cards)
@@ -37,7 +36,7 @@ function App() {
         {/* Login */}
         <Route path="/" element={<Login />} />
 
-        {/* Dashboard protegido con layout correcto */}
+        {/* Dashboard protegido */}
         <Route
           path="/dashboard"
           element={
@@ -46,7 +45,7 @@ function App() {
             </PrivateRoute>
           }
         >
-          {/* Home del dashboard (cards/atajos) */}
+          {/* Home */}
           <Route index element={<DashboardHome />} />
 
           {/* CRM */}
