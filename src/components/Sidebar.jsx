@@ -1,68 +1,256 @@
-import React from 'react';
-import { Settings, Users, Package, Truck, Calendar, UserCheck, TrendingUp, Brain, DollarSign, BookOpen, LogOut, User } from 'lucide-react';
+// src/components/Sidebar.jsx
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Users,
+  Building2,
+  Briefcase,
+  Ticket,
+  Package,
+  List,
+  Inbox,
+  Phone,
+  CheckSquare,
+  BookOpen,
+  MessageSquare,
+  FileText,
+  Calendar,
+  TrendingUp,
+  Brain,
+  DollarSign,
+  ChevronDown,
+  ChevronRight,
+} from "lucide-react";
 
-const Sidebar = ({ user, onLogout, currentPage, setCurrentPage }) => {
-  const menuItems = [
-    { icon: Settings, label: 'Configuración', page: 'config' },
-    { icon: Users, label: 'Gestión de Contactos', page: 'contacts' },
-    { icon: Package, label: 'Gestión de Pedidos', page: 'orders' },
-    { icon: Truck, label: 'Manejo de Pedidos', page: 'delivery' },
-    { icon: Calendar, label: 'Gestión de Calendarios', page: 'calendar' },
-    { icon: UserCheck, label: 'Módulo Afiliados', page: 'affiliates' },
-    { icon: TrendingUp, label: 'Análisis y Reportes', page: 'reports' },
-    { icon: Brain, label: 'AI y Machine Learning', page: 'ai' },
-    { icon: DollarSign, label: 'Estudio del mercado', page: 'market' },
-    { icon: BookOpen, label: 'Manual de usuario', page: 'manual' },
-  ];
+const Sidebar = ({ user, onLogout }) => {
+  const location = useLocation();
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const toggleMenu = (menu) => {
+    setOpenMenu(openMenu === menu ? null : menu);
+  };
 
   return (
-    <div className="sidebar-gradient w-64 min-h-screen p-4">
-      {/* Logo */}
-      <div className="flex items-center mb-8 cursor-pointer" onClick={() => setCurrentPage('dashboard')}>
-        <div className="bg-white p-2 rounded shadow">
-          <div className="text-blue-600 font-bold text-lg">Cotzul</div>
-        </div>
-        <div className="ml-2 text-white text-sm">.COM</div>
+    <div className="w-64 bg-gradient-to-b from-yellow-400 to-orange-500 text-white flex flex-col">
+      {/* Encabezado */}
+      <div className="p-4 text-center font-bold text-xl border-b border-orange-600">
+        Cotzul CRM
       </div>
 
-      {/* User info */}
-      <div className="text-white mb-6">
-        <div className="text-xs uppercase tracking-wide mb-1 opacity-75">SUPERUSUARIO</div>
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-medium">{user.name}</span>
-          <User className="w-4 h-4" />
-        </div>
-        <div className="text-xs opacity-75">{user.role}</div>
-      </div>
-
-      {/* Menu Items */}
-      <nav className="space-y-1">
-        {menuItems.map((item, index) => (
+      {/* Opciones */}
+      <nav className="flex-1 overflow-y-auto p-2">
+        {/* CRM */}
+        <div>
           <button
-            key={index}
-            onClick={() => setCurrentPage(item.page)}
-            className={`w-full flex items-center px-3 py-2 text-left rounded-md transition-colors duration-150 text-sm ${
-              currentPage === item.page
-                ? 'bg-yellow-600 text-white shadow'
-                : 'text-white hover:bg-yellow-600 hover:bg-opacity-50'
-            }`}
+            onClick={() => toggleMenu("crm")}
+            className="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-orange-600"
           >
-            <item.icon className="w-4 h-4 mr-3" />
-            {item.label}
+            <span className="flex items-center space-x-2">
+              <Users className="w-5 h-5" />
+              <span>CRM</span>
+            </span>
+            {openMenu === "crm" ? <ChevronDown /> : <ChevronRight />}
           </button>
-        ))}
+          {openMenu === "crm" && (
+            <div className="ml-6 mt-1 space-y-1">
+              <Link
+                to="/dashboardlayoutlayout/contacts"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("contacts")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Contactos
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/companies"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("companies")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Empresas
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/deals"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("deals")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Negocios
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/tickets"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("tickets")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Tickets
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/orders"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("orders")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Pedidos
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Marketing */}
+        <div>
+          <button
+            onClick={() => toggleMenu("marketing")}
+            className="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-orange-600 mt-2"
+          >
+            <span className="flex items-center space-x-2">
+              <List className="w-5 h-5" />
+              <span>Marketing</span>
+            </span>
+            {openMenu === "marketing" ? <ChevronDown /> : <ChevronRight />}
+          </button>
+          {openMenu === "marketing" && (
+            <div className="ml-6 mt-1 space-y-1">
+              <Link
+                to="/dashboardlayoutlayout/lists"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("lists")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Listas
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/inbox"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("inbox")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Bandeja de entrada
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/calls"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("calls")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Llamadas
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/tasks"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("tasks")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Tareas
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/guides"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("guides")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Guías prácticas
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/messages"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("messages")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Plantillas de mensajes
+              </Link>
+              <Link
+                to="/dashboardlayoutlayout/snippets"
+                className={`block px-3 py-1 rounded ${
+                  location.pathname.includes("snippets")
+                    ? "bg-orange-700"
+                    : "hover:bg-orange-600"
+                }`}
+              >
+                Fragmentos
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Otros módulos directos */}
+        <Link
+          to="/dashboardlayoutlayout/calendar"
+          className={`flex items-center space-x-2 px-3 py-2 rounded mt-2 ${
+            location.pathname.includes("calendar")
+              ? "bg-orange-700"
+              : "hover:bg-orange-600"
+          }`}
+        >
+          <Calendar className="w-5 h-5" /> <span>Calendario</span>
+        </Link>
+        <Link
+          to="/dashboardlayoutlayout/reports"
+          className={`flex items-center space-x-2 px-3 py-2 rounded ${
+            location.pathname.includes("reports")
+              ? "bg-orange-700"
+              : "hover:bg-orange-600"
+          }`}
+        >
+          <TrendingUp className="w-5 h-5" /> <span>Reportes</span>
+        </Link>
+        <Link
+          to="/dashboardlayoutlayout/ai"
+          className={`flex items-center space-x-2 px-3 py-2 rounded ${
+            location.pathname.includes("ai")
+              ? "bg-orange-700"
+              : "hover:bg-orange-600"
+          }`}
+        >
+          <Brain className="w-5 h-5" /> <span>AI & ML</span>
+        </Link>
+        <Link
+          to="/dashboardlayout/market"
+          className={`flex items-center space-x-2 px-3 py-2 rounded ${
+            location.pathname.includes("market")
+              ? "bg-orange-700"
+              : "hover:bg-orange-600"
+          }`}
+        >
+          <DollarSign className="w-5 h-5" /> <span>Mercado</span>
+        </Link>
       </nav>
 
-      {/* Logout */}
-      <button
-        onClick={onLogout}
-        className="w-full flex items-center px-3 py-2 text-left text-white hover:bg-red-500 hover:bg-opacity-20 rounded-md transition-colors duration-150 text-sm mt-8"
-      >
-        <LogOut className="w-4 h-4 mr-3" />
-        Cerrar Sesión
-      </button>
+      {/* Footer del sidebar */}
+      <div className="p-4 border-t border-orange-600 text-center text-sm">
+        <p>{user?.name}</p>
+        <button
+          onClick={onLogout}
+          className="mt-2 w-full bg-red-500 text-white py-1 rounded hover:bg-red-600"
+        >
+          Cerrar Sesión
+        </button>
+      </div>
     </div>
   );
 };
 
 export default Sidebar;
+
