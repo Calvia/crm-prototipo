@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import DashboardLayout from "./pages/DashboardLayout";
 import PrivateRoute from "./components/PrivateRoute";
+import { UserProvider } from "./components/UserContext"; // Importamos el proveedor del contexto
 
 // Dashboard (home con cards)
 import DashboardHome from "./pages/DashboardHome";
@@ -31,50 +32,52 @@ import Market from "./pages/Market";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Login */}
-        <Route path="/" element={<Login />} />
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Login */}
+          <Route path="/" element={<Login />} />
 
-        {/* Dashboard protegido */}
-        <Route
-          path="/dashboardlayout"
-          element={
-            <PrivateRoute>
-              <DashboardLayout />
-            </PrivateRoute>
-          }
-        >
-          {/* Home */}
-          <Route index element={<DashboardHome />} />
+          {/* Dashboard protegido */}
+          <Route
+            path="/dashboardlayout"
+            element={
+              <PrivateRoute>
+                <DashboardLayout />
+              </PrivateRoute>
+            }
+          >
+            {/* Home */}
+            <Route index element={<DashboardHome />} />
 
-          {/* CRM */}
-          <Route path="contacts" element={<Contacts />} />
-          <Route path="companies" element={<Companies />} />
-          <Route path="deals" element={<Deals />} />
-          <Route path="tickets" element={<Tickets />} />
-          <Route path="orders" element={<Orders />} />
+            {/* CRM */}
+            <Route path="contacts" element={<Contacts />} />
+            <Route path="companies" element={<Companies />} />
+            <Route path="deals" element={<Deals />} />
+            <Route path="tickets" element={<Tickets />} />
+            <Route path="orders" element={<Orders />} />
 
-          {/* Marketing */}
-          <Route path="lists" element={<Lists />} />
-          <Route path="inbox" element={<Inbox />} />
-          <Route path="calls" element={<Calls />} />
-          <Route path="tasks" element={<Tasks />} />
-          <Route path="guides" element={<Guides />} />
-          <Route path="messages" element={<Messages />} />
-          <Route path="snippets" element={<Snippets />} />
+            {/* Marketing */}
+            <Route path="lists" element={<Lists />} />
+            <Route path="inbox" element={<Inbox />} />
+            <Route path="calls" element={<Calls />} />
+            <Route path="tasks" element={<Tasks />} />
+            <Route path="guides" element={<Guides />} />
+            <Route path="messages" element={<Messages />} />
+            <Route path="snippets" element={<Snippets />} />
 
-          {/* Otros */}
-          <Route path="calendar" element={<Calendar />} />
-          <Route path="reports" element={<Reports />} />
-          <Route path="ai" element={<AI />} />
-          <Route path="market" element={<Market />} />
-        </Route>
+            {/* Otros */}
+            <Route path="calendar" element={<Calendar />} />
+            <Route path="reports" element={<Reports />} />
+            <Route path="ai" element={<AI />} />
+            <Route path="market" element={<Market />} />
+          </Route>
 
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </BrowserRouter>
+          {/* Fallback */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 

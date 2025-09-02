@@ -54,7 +54,7 @@ const Sidebar = ({ user, onLogout }) => {
           {openMenu === "crm" && (
             <div className="ml-6 mt-1 space-y-1">
               <Link
-                to="/dashboardlayoutlayout/contacts"
+                to="/dashboardlayout/contacts"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("contacts")
                     ? "bg-orange-700"
@@ -64,7 +64,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Contactos
               </Link>
               <Link
-                to="/dashboardlayoutlayout/companies"
+                to="/dashboardlayout/companies"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("companies")
                     ? "bg-orange-700"
@@ -74,7 +74,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Empresas
               </Link>
               <Link
-                to="/dashboardlayoutlayout/deals"
+                to="/dashboardlayout/deals"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("deals")
                     ? "bg-orange-700"
@@ -84,7 +84,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Negocios
               </Link>
               <Link
-                to="/dashboardlayoutlayout/tickets"
+                to="/dashboardlayout/tickets"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("tickets")
                     ? "bg-orange-700"
@@ -94,7 +94,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Tickets
               </Link>
               <Link
-                to="/dashboardlayoutlayout/orders"
+                to="/dashboardlayout/orders"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("orders")
                     ? "bg-orange-700"
@@ -122,7 +122,7 @@ const Sidebar = ({ user, onLogout }) => {
           {openMenu === "marketing" && (
             <div className="ml-6 mt-1 space-y-1">
               <Link
-                to="/dashboardlayoutlayout/lists"
+                to="/dashboardlayout/lists"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("lists")
                     ? "bg-orange-700"
@@ -132,7 +132,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Listas
               </Link>
               <Link
-                to="/dashboardlayoutlayout/inbox"
+                to="/dashboardlayout/inbox"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("inbox")
                     ? "bg-orange-700"
@@ -142,7 +142,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Bandeja de entrada
               </Link>
               <Link
-                to="/dashboardlayoutlayout/calls"
+                to="/dashboardlayout/calls"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("calls")
                     ? "bg-orange-700"
@@ -152,7 +152,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Llamadas
               </Link>
               <Link
-                to="/dashboardlayoutlayout/tasks"
+                to="/dashboardlayout/tasks"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("tasks")
                     ? "bg-orange-700"
@@ -162,7 +162,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Tareas
               </Link>
               <Link
-                to="/dashboardlayoutlayout/guides"
+                to="/dashboardlayout/guides"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("guides")
                     ? "bg-orange-700"
@@ -172,7 +172,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Guías prácticas
               </Link>
               <Link
-                to="/dashboardlayoutlayout/messages"
+                to="/dashboardlayout/messages"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("messages")
                     ? "bg-orange-700"
@@ -182,7 +182,7 @@ const Sidebar = ({ user, onLogout }) => {
                 Plantillas de mensajes
               </Link>
               <Link
-                to="/dashboardlayoutlayout/snippets"
+                to="/dashboardlayout/snippets"
                 className={`block px-3 py-1 rounded ${
                   location.pathname.includes("snippets")
                     ? "bg-orange-700"
@@ -197,7 +197,7 @@ const Sidebar = ({ user, onLogout }) => {
 
         {/* Otros módulos directos */}
         <Link
-          to="/dashboardlayoutlayout/calendar"
+          to="/dashboardlayout/calendar"
           className={`flex items-center space-x-2 px-3 py-2 rounded mt-2 ${
             location.pathname.includes("calendar")
               ? "bg-orange-700"
@@ -207,7 +207,7 @@ const Sidebar = ({ user, onLogout }) => {
           <Calendar className="w-5 h-5" /> <span>Calendario</span>
         </Link>
         <Link
-          to="/dashboardlayoutlayout/reports"
+          to="/dashboardlayout/reports"
           className={`flex items-center space-x-2 px-3 py-2 rounded ${
             location.pathname.includes("reports")
               ? "bg-orange-700"
@@ -217,7 +217,7 @@ const Sidebar = ({ user, onLogout }) => {
           <TrendingUp className="w-5 h-5" /> <span>Reportes</span>
         </Link>
         <Link
-          to="/dashboardlayoutlayout/ai"
+          to="/dashboardlayout/ai"
           className={`flex items-center space-x-2 px-3 py-2 rounded ${
             location.pathname.includes("ai")
               ? "bg-orange-700"

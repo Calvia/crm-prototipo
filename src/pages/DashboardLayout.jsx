@@ -1,43 +1,82 @@
-// src/pages/DashboardLayout.jsx
-import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { User } from "lucide-react";
+import React, { useContext } from "react";
+import { Outlet, useLocation, Link, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import { UserContext } from "../components/UserContext";
+
+// Función para generar breadcrumbs dinámicos
+const Breadcrumbs = () => {
+  const location = useLocation();
+  const pathnames = location.pathname.split("/").filter((x) => x);
+
+  return (
+    <nav className="text-sm text-gray-600">
+      <ol className="flex space-x-2">
+        <li>
+          <Link to="/dashboardlayout" className="hover:underline text-yellow-600">
+            Dashboard
+          </Link>
+        </li>
+        {pathnames.slice(1).map((value, index) => {
+          const to = `/${pathnames.slice(0, index + 2).join("/")}`;
+          const isLast = index === pathnames.slice(1).length - 1;
+          return (
+            <li key={to} className="flex items-center space-x-2">
+              <span>/</span>
+              {isLast ? (
+                <span className="font-semibold capitalize text-gray-800">
+                  {value}
+                </span>
+              ) : (
+                <Link
+                  to={to}
+                  className="hover:underline capitalize text-yellow-600"
+                >
+                  {value}
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+};
 
 const DashboardLayout = () => {
+  const { userName, setUserName } = useContext(UserContext);
   const navigate = useNavigate();
-  const storedUser =
-    JSON.parse(localStorage.getItem("user")) || { name: "Invitado", role: "N/A" };
 
   const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("user");
+    // Lógica para cerrar sesión: limpia el nombre de usuario y navega a la página de inicio
+    setUserName('');
     navigate("/");
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <Sidebar user={storedUser} onLogout={handleLogout} />
+    <div className="flex h-screen bg-gray-100">
+      {/* Sidebar */}
+      <Sidebar user={{ name: userName }} onLogout={handleLogout} />
 
-      <div className="flex-1 p-8">
+      {/* Contenido principal */}
+      <div className="flex flex-col flex-1">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-800">Bienvenido {storedUser.name}</h1>
+        <header className="bg-white shadow p-4 flex justify-between items-center">
+          <div>
+            <h1 className="text-xl font-bold text-gray-800">Bienvenido, {userName}</h1>
+            <Breadcrumbs />
+          </div>
           <button
             onClick={handleLogout}
-            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+            className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
           >
-            Cerrar Sesión
+            Cerrar sesión
           </button>
-        </div>
+        </header>
 
-        {/* Aquí se cargan las páginas internas */}
-        <Outlet />
-
-        {/* Footer */}
-        <div className="mt-12 text-center text-gray-400 text-sm">
-          © Cotzul 2019
-        </div>
+        {/* Contenido dinámico */}
+        <main className="flex-1 p-6 overflow-y-auto">
+          <Outlet />
+        </main>
       </div>
     </div>
   );

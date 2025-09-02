@@ -18,24 +18,26 @@ import {
   Brain,
   DollarSign,
 } from "lucide-react";
+import { UserContext } from "../components/UserContext";
+
 
 const modules = [
-  { name: "Contactos", icon: Users, path: "/dashboarlayout/contacts", desc: "Gestión de contactos" },
-  { name: "Empresas", icon: Building2, path: "/dashboarlayout/companies", desc: "Administrar empresas" },
-  { name: "Negocios", icon: Briefcase, path: "/dashboarlayout/deals", desc: "Oportunidades de negocio" },
-  { name: "Tickets", icon: Ticket, path: "/dashboarlayout/tickets", desc: "Soporte y tickets" },
-  { name: "Pedidos", icon: Package, path: "/dashboarlayout/orders", desc: "Gestión de pedidos" },
-  { name: "Listas", icon: List, path: "/dashboarlayout/lists", desc: "Segmentación de listas" },
-  { name: "Bandeja de entrada", icon: Inbox, path: "/dashboarlayout/inbox", desc: "Comunicación centralizada" },
-  { name: "Llamadas", icon: Phone, path: "/dashboarlayout/calls", desc: "Registro de llamadas" },
-  { name: "Tareas", icon: CheckSquare, path: "/dashboarlayout/tasks", desc: "Gestión de tareas" },
-  { name: "Guías", icon: BookOpen, path: "/dashboarlayout/guides", desc: "Documentación y guías" },
-  { name: "Mensajes", icon: MessageSquare, path: "/dashboarlayout/messages", desc: "Plantillas de mensajes" },
-  { name: "Fragmentos", icon: FileText, path: "/dashboarlayout/snippets", desc: "Textos predefinidos" },
-  { name: "Calendario", icon: Calendar, path: "/dashboarlayout/calendar", desc: "Organiza tus actividades" },
-  { name: "Reportes", icon: TrendingUp, path: "/dashboarlayout/reports", desc: "Analiza tus métricas" },
-  { name: "AI & ML", icon: Brain, path: "/dashboarlayout/ai", desc: "Inteligencia Artificial" },
-  { name: "Mercado", icon: DollarSign, path: "/dashboarlayout/market", desc: "Oportunidades del mercado" },
+  { name: "Contactos", icon: Users, path: "contacts", desc: "Gestión de contactos" },
+  { name: "Empresas", icon: Building2, path: "companies", desc: "Administrar empresas" },
+  { name: "Negocios", icon: Briefcase, path: "deals", desc: "Oportunidades de negocio" },
+  { name: "Tickets", icon: Ticket, path: "tickets", desc: "Soporte y tickets" },
+  { name: "Pedidos", icon: Package, path: "orders", desc: "Gestión de pedidos" },
+  { name: "Listas", icon: List, path: "lists", desc: "Segmentación de listas" },
+  { name: "Bandeja de entrada", icon: Inbox, path: "inbox", desc: "Comunicación centralizada" },
+  { name: "Llamadas", icon: Phone, path: "calls", desc: "Registro de llamadas" },
+  { name: "Tareas", icon: CheckSquare, path: "tasks", desc: "Gestión de tareas" },
+  { name: "Guías", icon: BookOpen, path: "guides", desc: "Documentación y guías" },
+  { name: "Mensajes", icon: MessageSquare, path: "messages", desc: "Plantillas de mensajes" },
+  { name: "Fragmentos", icon: FileText, path: "snippets", desc: "Textos predefinidos" },
+  { name: "Calendario", icon: Calendar, path: "calendar", desc: "Organiza tus actividades" },
+  { name: "Reportes", icon: TrendingUp, path: "reports", desc: "Analiza tus métricas" },
+  { name: "AI & ML", icon: Brain, path: "ai", desc: "Inteligencia Artificial" },
+  { name: "Mercado", icon: DollarSign, path: "market", desc: "Oportunidades del mercado" },
 ];
 
 const DashboardHome = () => {
@@ -51,6 +53,8 @@ const DashboardHome = () => {
             <div
               key={mod.name}
               onClick={() => navigate(mod.path)}
+
+
               className="cursor-pointer bg-gradient-to-r from-yellow-400 to-orange-500 p-6 rounded-xl shadow-lg text-white hover:scale-105 transform transition duration-200"
             >
               <div className="flex items-center space-x-4">
